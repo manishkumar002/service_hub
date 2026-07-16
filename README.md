@@ -1,24 +1,272 @@
 # 🚀 ServiceHub
 
-A full-stack **Home Services Marketplace** built with **Node.js, Express.js, MongoDB, React (Vite), and React Bootstrap**.
+ServiceHub is a full-stack Home Services Marketplace built with **Node.js, Express.js, MongoDB, React (Vite), React Bootstrap, and Google Gemini AI**.
 
-The platform allows clients to post service requests and providers to browse, apply, chat, manage subscriptions, and receive payments. It also includes **AI-powered database search** using **Google Gemini**.
+The platform allows users to register as **Clients** or **Service Providers**, post jobs, apply for jobs, chat with each other, make payments, purchase subscriptions, and use AI-powered features like **Database Search** and **PDF Chat**.
 
 ---
 
-# 📌 Tech Stack
+# ✨ Features
 
-### Backend
+## 👤 Authentication
+
+- User Registration
+- Login
+- JWT Authentication
+- Role Based Access (Client / Provider / Admin)
+- Profile Management
+
+---
+
+## 🛠 Service Marketplace
+
+- Create Jobs
+- Update Jobs
+- Delete Jobs
+- Browse Jobs
+- Apply for Jobs
+- Hire Provider
+- Categories
+- Search Jobs
+- Job Status Management
+
+---
+
+## 💬 Chat System
+
+- Client ↔ Provider Chat
+- Conversation History
+- Message Storage
+- Real-time Ready Architecture
+
+---
+
+## 💳 Payment System
+
+- Razorpay Integration
+- Payment Verification
+- Subscription Purchase
+- Payment History
+
+---
+
+## ⭐ Subscription
+
+- Monthly Plan
+- Yearly Plan
+- Premium Provider
+- Subscription Expiry
+
+---
+
+# 🤖 AI Features
+
+ServiceHub includes multiple AI-powered modules using **Google Gemini AI**.
+
+## 1️⃣ AI Chat
+
+Ask anything in natural language.
+
+Example:
+
+- Explain my profile
+- How many jobs are active?
+- Show today's activity
+
+---
+
+## 2️⃣ AI Database Search
+
+Search directly from MongoDB using natural language.
+
+Examples
+
+```
+Find Manish
+
+Show premium providers
+
+Show completed jobs
+
+Find electricians in Lucknow
+
+Show active subscriptions
+
+Who paid today?
+
+Show all plumbing jobs
+```
+
+Flow
+
+```
+User
+      │
+      ▼
+Gemini AI
+      │
+      ▼
+Collection Detection
+      │
+      ▼
+MongoDB Search
+      │
+      ▼
+Relevant Documents
+      │
+      ▼
+Gemini AI
+      │
+      ▼
+Human Readable Answer
+```
+
+Supports
+
+- Users
+- Jobs
+- Categories
+- Payments
+- Messages
+- Conversations
+- Subscriptions
+
+---
+
+## 3️⃣ PDF Chat
+
+Upload PDF files and ask questions.
+
+Examples
+
+```
+Summarize this PDF
+
+Explain Chapter 5
+
+Find payment policy
+
+What is mentioned about subscriptions?
+
+Show important points
+```
+
+Flow
+
+```
+PDF Upload
+      │
+      ▼
+Text Extraction
+      │
+      ▼
+Chunking
+      │
+      ▼
+Embeddings
+      │
+      ▼
+Vector Database
+      │
+      ▼
+Gemini AI
+      │
+      ▼
+Answer
+```
+
+---
+
+## 4️⃣ AI Router
+
+The application automatically decides where the answer should come from.
+
+```
+User Question
+        │
+        ▼
+      AI Router
+        │
+ ┌──────┴────────┐
+ │               │
+ ▼               ▼
+MongoDB      PDF Vector DB
+ │               │
+ └──────┬────────┘
+        ▼
+    Gemini AI
+        ▼
+     Final Answer
+```
+
+Examples
+
+```
+Show all premium providers
+```
+
+➡ MongoDB
+
+```
+Summarize uploaded PDF
+```
+
+➡ PDF AI
+
+```
+Explain subscription policy from PDF
+```
+
+➡ PDF AI
+
+```
+Find Manish's phone number
+```
+
+➡ MongoDB
+
+---
+
+# 🗄 Database Collections
+
+- Users
+- Jobs
+- Categories
+- Payments
+- Messages
+- Conversations
+- Subscriptions
+
+---
+
+# 📡 APIs
+
+- Authentication API
+- User API
+- Category API
+- Job API
+- Payment API
+- Subscription API
+- Chat API
+- AI Chat API
+- AI Database Search API
+- PDF Chat API
+
+---
+
+# 🧰 Tech Stack
+
+## Backend
 
 - Node.js
 - Express.js
 - MongoDB
 - Mongoose
-- JWT Authentication
+- JWT
 - Google Gemini AI
 - Razorpay
 
-### Frontend
+## Frontend
 
 - React (Vite)
 - React Bootstrap
@@ -27,74 +275,61 @@ The platform allows clients to post service requests and providers to browse, ap
 
 ---
 
-# 📁 Project Structure
+# 📁 Folder Structure
 
 ```
-ServiceHub
+Backend
 │
-├── Backend
-│   ├── controllers
-│   ├── models
-│   ├── routes
-│   ├── middleware
-│   ├── services
-│   ├── utils
-│   └── server.js
+├── controllers
+├── middleware
+├── models
+├── routes
+├── services
+├── utils
+└── server.js
+
+Frontend
 │
-├── Frontend
-│   ├── src
-│   ├── public
-│   └── vite.config.js
-│
-└── README.md
+├── src
+├── assets
+├── components
+├── pages
+└── App.jsx
 ```
 
 ---
 
 # ⚙️ Installation
 
-## Clone Repository
+Clone Repository
 
 ```bash
 git clone <repository-url>
-cd ServiceHub
 ```
 
----
-
-## Install Dependencies
+Install Dependencies
 
 ```bash
 npm run install:all
 ```
 
-or
-
-```bash
-cd Backend
-npm install
-
-cd ../Frontend
-npm install
-```
-
 ---
 
-# ▶️ Run Project
+# ▶ Run Project
 
-Run Backend + Frontend together
+Backend + Frontend
 
 ```bash
 npm run dev:all
 ```
 
-Backend only
+Backend
 
 ```bash
 npm run dev:server
 ```
 
-Frontend only
+Frontend
 
 ```bash
 npm run dev:client
@@ -102,214 +337,36 @@ npm run dev:client
 
 ---
 
-# 🌐 Default URLs
-
-Backend
-
-```
-http://localhost:8080
-```
-
-Frontend
-
-```
-http://localhost:5173
-```
-
----
-
 # 🔑 Environment Variables
 
-Create a `.env` file inside the **Backend** folder.
+Create `Backend/.env`
 
 ```env
 PORT=8080
 
-MONGODB_URI=your_mongodb_connection
+MONGODB_URI=
 
-JWT_SECRET=your_jwt_secret
+JWT_SECRET=
 
-GEMINI_API_KEY=your_google_gemini_api_key
+GEMINI_API_KEY=
 
-RAZORPAY_KEY_ID=your_key
+RAZORPAY_KEY_ID=
 
-RAZORPAY_SECRET=your_secret
+RAZORPAY_SECRET=
 ```
 
 ---
 
-# ✨ Features
+# 🚀 Future Enhancements
 
-## Authentication
-
-- User Registration
-- Login
-- JWT Authentication
-- Profile Management
-
----
-
-## Client Features
-
-- Create Job
-- Edit Job
-- Delete Job
-- View Posted Jobs
-- Hire Provider
-
----
-
-## Provider Features
-
-- Browse Jobs
-- Apply for Jobs
-- Subscription Plans
-- Premium Provider
-- Profile Management
-
----
-
-## Categories
-
-- Create Category
-- Update Category
-- Delete Category
-- Browse Categories
-
----
-
-## Chat System
-
-- Client ↔ Provider Conversation
-- Real-time Message Storage
-
----
-
-## Payment
-
-- Razorpay Integration
-- Payment History
-- Subscription Payments
-
----
-
-# 🤖 AI Search (Google Gemini)
-
-The project includes an **AI-powered search system** using **Google Gemini**.
-
-Users can search using natural language instead of fixed filters.
-
-### Examples
-
-```
-Show electricians in Lucknow
-
-Find premium providers
-
-Show completed jobs
-
-Find Manish's profile
-
-Show monthly subscriptions
-```
-
-### AI Workflow
-
-```
-User Question
-      │
-      ▼
-Google Gemini
-      │
-      ▼
-Detect Collection + Search Keyword
-      │
-      ▼
-MongoDB Text Search
-      │
-      ▼
-Relevant Records
-      │
-      ▼
-Google Gemini
-      │
-      ▼
-Human-readable Response
-```
-
-### Supported Collections
-
-- Users
-- Jobs
-- Categories
-- Payments
-- Messages
-- Conversations
-- Subscriptions
-
----
-
-# 🗄️ Database
-
-MongoDB Collections
-
-- Users
-- Jobs
-- Categories
-- Payments
-- Messages
-- Conversations
-- Subscriptions
-
----
-
-# 📦 API Modules
-
-- Authentication API
-- User API
-- Category API
-- Job API
-- Chat API
-- Payment API
-- Subscription API
-- AI Search API
-
----
-
-# 🚀 AI Search API
-
-```
-POST /api/ai/search
-```
-
-### Request
-
-```json
-{
-  "question": "Find electricians in Lucknow"
-}
-```
-
-### Response
-
-```json
-{
-  "success": true,
-  "answer": "3 electricians found in Lucknow.",
-  "data": []
-}
-```
-
----
-
-# 📜 Available Scripts
-
-| Command | Description |
-|----------|-------------|
-| npm run install:all | Install all dependencies |
-| npm run dev:all | Run frontend and backend |
-| npm run dev:server | Run backend only |
-| npm run dev:client | Run frontend only |
+- Voice AI
+- Image Search
+- OCR Support
+- Multi-PDF Chat
+- AI Recommendation Engine
+- Semantic Search
+- Vector Search
+- AI Agent Support
 
 ---
 
@@ -317,7 +374,7 @@ POST /api/ai/search
 
 **Manish Kumar**
 
-Full Stack (MERN) Developer
+Full Stack MERN Developer
 
 - Node.js
 - Express.js
@@ -325,3 +382,5 @@ Full Stack (MERN) Developer
 - React.js
 - React Native
 - Google Gemini AI
+- AI Search
+- PDF Chat
