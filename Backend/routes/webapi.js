@@ -1,5 +1,7 @@
 const express = require("express");
 const router = express.Router();
+const upload = require("../middleware/multer");
+const { uploadFile,chat,aiChat,aiSearch} = require("../controllers/chatAiController");
 //controllers
 const { register, login,getMyProfile,updateMyProfile } = require("../controllers/authController");
 const {getCategories,getCategoryDetails,createCategory,updateCategory,deleteCategory,} = require("../controllers/categoryController");
@@ -58,5 +60,11 @@ router.get("/my-subscription",isAuthenticatedUser,checkRole("provider"),getMySub
 //notifications
 
 //reports
+
+//chat
+router.post("/upload-file",upload.single("file"),uploadFile);
+router.post("/pdf-chat",chat);
+router.post("/ai-chat",aiChat);
+router.post("/ai-search", aiSearch);
 
 module.exports = router;

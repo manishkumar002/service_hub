@@ -145,6 +145,16 @@ const userSchema = new mongoose.Schema(
 );
 
 userSchema.index({ location: "2dsphere" });
+userSchema.index({
+  fullName: "text",
+  email: "text",
+  phone: "text",
+  city: "text",
+  state: "text",
+  address: "text",
+  skills: "text",
+  bio: "text",
+});
 const User = mongoose.model("User", userSchema);
 module.exports = User;
 

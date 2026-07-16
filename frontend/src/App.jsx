@@ -2,7 +2,7 @@ import { Routes, Route, Navigate } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import MainLayout from "./components/layout/MainLayout";
 import ProtectedRoute from "./components/ProtectedRoute";
-import WaterBubbleCursor from "./components/WaterBubbleCursor"
+import WaterBubbleCursor from "./components/WaterBubbleCursor";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
@@ -17,11 +17,12 @@ import AdminCategories from "./pages/AdminCategories";
 import Chat from "./pages/Chat";
 import Subscription from "./pages/Subscription";
 import ApplicationsInbox from "./pages/ApplicationsInbox";
+import ChatAI from ".././src/chatAi/ChatAi";
 
 function App() {
   return (
     <>
-     <WaterBubbleCursor /> 
+      <WaterBubbleCursor />
       <Routes>
         <Route element={<MainLayout />}>
           <Route index element={<Home />} />
@@ -128,6 +129,7 @@ function App() {
           <Route path="*" element={<Navigate to="/" replace />} />
         </Route>
       </Routes>
+      <ChatAI />
       <ToastContainer position="top-right" autoClose={3000} theme="colored" />
     </>
   );

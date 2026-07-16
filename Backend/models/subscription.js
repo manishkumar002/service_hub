@@ -43,4 +43,8 @@ const subscriptionSchema = new mongoose.Schema(
   { timestamps: true },
 );
 
+subscriptionSchema.index({
+  plan: "text",
+  status: "text",
+});
 module.exports = mongoose.model("Subscription", subscriptionSchema);

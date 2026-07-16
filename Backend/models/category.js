@@ -32,9 +32,14 @@ const categorySchema = new mongoose.Schema(
       default: true,
     },
   },
-  { timestamps: true }
+  { timestamps: true },
 );
 
+categorySchema.index({
+  name: "text",
+  description: "text",
+  slug: "text",
+});
 const Category = mongoose.model("Category", categorySchema);
 module.exports = Category;
 // HELPER FUNCTIONS

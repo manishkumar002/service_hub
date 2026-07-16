@@ -23,4 +23,7 @@ const messageSchema = new mongoose.Schema(
   { timestamps: true },
 );
 
+messageSchema.index({
+  message: "text",
+});
 module.exports = mongoose.model("Message", messageSchema);
